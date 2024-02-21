@@ -1,0 +1,27 @@
+<div th:fragment="cabecera">
+	<header>
+		<h1>Inventario</h1>
+	</header>
+</div>
+
+<div th:fragment="menu_nav">
+
+	<nav>
+		<div>
+			<p th:text="${session.mensaje}"></p>
+		</div>
+		<ul>
+			<li>
+				<a th:href="@{/menu_insertar}" class="enlace_menu">AGREGAR</a>
+			</li>
+			<li>
+				<a th:href="@{/menu_mostrar}" class="enlace_menu">MOSTRAR</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+<div th:fragment="pie">
+	<footer>
+		<p>Designed by: Xabier</p>
+	</footer>
+</div>

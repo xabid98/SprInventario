@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/movil.css}" media="screen and (max-width: 480px)">
+	<link rel="stylesheet" th:href="@{/sobremesa.css}" media="screen and (min-width: 481px) ">
+</head>
+<body>
+	<div th:include="plantilla.html::cabecera"></div>
+	<main>
+		<div th:include="plantilla.html::menu_nav"></div>
+		<section>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>CANTIDAD</th>
+						<th>Modificar</th>
+						<th>Borrar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="elemento : ${atr_lista_productos}">
+						<td th:text="${elemento.id}"></td>
+						<td th:text="${elemento.productoInventario.nombre}"></td>
+						<td th:text="${elemento.cantidad}"></td>
+						<td>
+							<a th:href="@{'/seleccionarProducto/' + ${elemento.id}}">Modificar</a>
+
+						</td>
+						<td>
+							<a th:href="@{'/borrarProducto/' + ${elemento.id}}">Borrar</a>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+	<div th:include="plantilla.html::pie"></div>
+</body>
+</html>

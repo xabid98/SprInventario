@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<link rel="stylesheet" media="screen and (min-width: 801px)" th:href="@{/sobremesa.css}" />
+	<link rel="stylesheet" media="screen and (max-width: 800px)" th:href="@{/movil.css}" />
+</head>
+
+<body>
+	<div th:include="plantilla.html::cabecera"></div>
+	<main>
+		<div th:include="plantilla.html::menu_nav"></div>
+		<section>
+			<form th:action="@{/actualizar_cantidad}" method="post" th:object="${objeto_entidad}">
+				<div class="input_div">
+					<label for="nombre">Producto</label>
+					<select name="nombre" id="nombre" th:field="*{productoInventario.id}">
+						<option th:each="elem : ${atr_lista_productos}" th:value="${elem.id}" th:text="${elem.nombre}">
+						</option>
+					</select>
+				</div>
+				<div class="input_div">
+					<label for="cantidad">Cantidad</label>
+					<input type="text" name="cantidad" id="cantidad" th:field="*{cantidad}" th:text="*{cantidad}">
+				</div>
+				<input type="submit" value="Enviar">
+			</form>
+		</section>
+	</main>
+	<div th:include="plantilla.html::pie"></div>
+</body>
+</html>
